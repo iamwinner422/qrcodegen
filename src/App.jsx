@@ -28,7 +28,7 @@ function App() {
             .then(function (dataUrl) {
                 const link = document.createElement("a");
                 link.href = dataUrl;
-                link.download = `${changeLinkToName(url)}.jpg`;
+                link.download = `${changeLinkToName(url)}.png`;
                 link.click();
             })
             .catch(function (error) {
