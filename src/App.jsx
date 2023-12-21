@@ -5,6 +5,7 @@ import {Button} from "@/components/ui/button"
 import {useRef, useState} from "react";
 import QRCode from "react-qr-code";
 import * as htmlToImage from "html-to-image";
+import changeLinkToName from "@/utils/changeLinkToName.js";
 
 function App() {
     const [url, setUrl] = useState("");
@@ -12,10 +13,6 @@ function App() {
     const [isError, setIsError] = useState(false);
     const qrCodeRef = useRef(null);
 
-    const changeLinkToQrCodeName = (url) => {
-        const res = url.split("://");
-        return res[1].replace(/\//g, "-");
-    }
     const handleGenerateClick =  () => {
         if (url === "") {
             setIsError(true);
@@ -33,7 +30,7 @@ function App() {
             .then(function (dataUrl) {
                 const link = document.createElement("a");
                 link.href = dataUrl;
-                link.download = `${changeLinkToQrCodeName(url)}.png`;
+                link.download = `${changeLinkToName(url)}.jpg`;
                 link.click();
             })
             .catch(function (error) {
