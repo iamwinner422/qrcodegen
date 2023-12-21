@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button"
 import {useRef, useState} from "react";
 import QRCode from "react-qr-code";
 import * as htmlToImage from "html-to-image";
-import changeLinkToName from "@/utils/changeLinkToName.js";
+import formatName from "@/utils/formatName.js";
 
 function App() {
     const [url, setUrl] = useState("");
@@ -28,7 +28,7 @@ function App() {
             .then(function (dataUrl) {
                 const link = document.createElement("a");
                 link.href = dataUrl;
-                link.download = `${changeLinkToName(url)}.png`;
+                link.download = `${formatName(url)}.png`;
                 link.click();
             })
             .catch(function (error) {
