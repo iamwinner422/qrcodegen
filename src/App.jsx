@@ -17,11 +17,9 @@ function App() {
         if (url === "") {
             setIsError(true);
             setQrIsVisible(false);
-            return;
         }else{
             setIsError(false);
             setQrIsVisible(true);
-            return;
         }
     }
 
